@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from tensorflow.keras.models import load_model
+from tensorflow.keras.applications.resnet50 import preprocess_input
+from scripts.formulas import (get_image, blockshaped,
+                              unblockshaped, get_array_pictures,
+                              get_picture_arrays, pred_to_array,
+                              categories_df, categories_to_image, save_tif)
+
+import os
+import numpy as np
+import pandas as pd
+
+# Define some Parameters
+LOCAL_DATA_PATH = os.get.environ('DATA_SOURCE')
+CITY = os.get.environ('CITY')
+LOCAL_MODEL_PATH = os.get.environ('LOCAL_MODEL_PATH')
+
+# Load Image (from local data for now)
+if os.environ.get('DATA_SOURCE') == 'local':
+    im = get_image(os.path.join(LOCAL_DATA_PATH, 'raw', CITY))
+else:
+    pass # to add API
+
+# Convert Data to Arrays
+X = get_array_pictures(im, os.environ.get('PIXELS'))
+
+# Load Model - > We will call it from the cloud after
+if os.environ.get('DATA_SOURCE') == 'local':
+    model = load_model(os.path.join(LOCAL_DATA_PATH, 'model'))
+else: pass
+
+# Preprocess
+X_preprocessed = preprocess_input(X)
+
+# Predict
+y_pred = model.predict(X_preprocessed)
+
+# Create a Categorical Variable (Pipeline)
+y_pred_cat = pred_to_array(y_pred)
+
+# Create a Dataframe
+prediction_df = categories_df(y_pred_cat)
+
+# Map Array to RGB Palette
+RGB_image = categories_to_image(y_pred_cat, im)
+
+# To add - Geo-Locate
