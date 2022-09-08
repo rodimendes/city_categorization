@@ -43,3 +43,6 @@ termcolor
 
 # temp
 tensorflow
+
+# frontend
+streamlit

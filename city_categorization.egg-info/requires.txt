@@ -26,3 +26,4 @@ joblib
 memoized-property
 termcolor
 tensorflow
+streamlit

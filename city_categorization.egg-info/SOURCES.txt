@@ -1,4 +1,5 @@
 MANIFEST.in
+Makefile
 README.md
 requirements.txt
 setup.py
@@ -10,7 +11,18 @@ city_categorization.egg-info/dependency_links.txt
 city_categorization.egg-info/not-zip-safe
 city_categorization.egg-info/requires.txt
 city_categorization.egg-info/top_level.txt
+city_categorization/__pycache__/__init__.cpython-38.pyc
+city_categorization/__pycache__/main.cpython-38.pyc
 city_categorization/api/__init__.py
 city_categorization/api/fast.py
+city_categorization/data/.keep
+frontend/app_sentinel.py
+frontend/home.py
+frontend/__pycache__/home.cpython-38.pyc
+notebooks/.keep
 scripts/city-categorization-run
+scripts/formulas.py
+scripts/get_image.py
+scripts/__pycache__/formulas.cpython-38.pyc
+scripts/__pycache__/get_image.cpython-38.pyc
 tests/__init__.py

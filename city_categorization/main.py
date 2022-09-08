@@ -1,5 +1,5 @@
 from tensorflow.keras.models import load_model
-from tensorflow.keras.applications.resnet50 import preprocess_input
+from tensorflow.keras.applications.efficientnet import preprocess_input
 from scripts.formulas import (get_image, blockshaped, unblockshaped,
                               get_array_pictures, get_picture_arrays,
                               pred_to_array, categories_df,
